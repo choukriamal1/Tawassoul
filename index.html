@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestionnaire des participants</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+         <style type="text/tailwindcss">
+             @theme {
+                --font-poppins: "Poppins", sans-serif;
+            }
+        </style> 
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
+        <script type="module" src="main.js" defer></script>
+
+    </head>
+    <body class="bg-[#F3F4F6] font-poppins text-[#1F2937] m-4">
+
+        <header class="sticky flex gap-4 top-0 z-10 border-b ">
+            <img src="logo.jpg" alt="logo" class="h-15 w-15">
+            <h1 class="p-5 text-2xl">Gestionnaire des participants</h1>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 mt-4 gap-4">
+
+            <section id="comptage" class="lg:col-span-2 flex flex-col md:flex-row lg:flex-row gap-4">
+                <div class="shadow rounded px-4">
+                    <p>nombre total de participants:
+                        <span id="total">0</span> 
+                        <!-- on peut pas entrer div en p -->
+                    </p>
+                </div>
+
+                <div class="shadow rounded px-4">
+                    <p>nombre de participants sélectionnés:
+                        <span id="selection">0</span> 
+                    </p>
+                </div>
+            </section>
+
+            <section id="saisie" class="shadow rounded bg-white p-4 ">
+                <form class="flex flex-col justify-center gap-3">
+
+                    <label for="nom" class="font-semibold">Nom complet:</label>
+                    <input id="nom" placeholder="...Min-3-caractères alphabétiques" class="border rounded px-3">
+                    
+                    <p id="erreur-nom" class="text-red-700 text-sm"></p>
+                    
+                    <label for="formation" class="font-semibold">Formation</label>
+                    <select id="formation" class="border rounded px-3">
+                        <option value="" disabled selected>Formation</option>
+                        <option value="Bureautique">Bureautique</option>
+                        <option value="Web">Web</option>
+                        <option value="Langues">Langues</option>
+                    </select>
+                    <label for="email" class="font-semibold">Email:</label>
+
+                    <input type="email" id="email" placeholder="exemple@mail.com" class="border rounded px-3">
+                    <p id="erreur-email" class="text-red-700 text-sm"></p>
+                    <button id="btnAjouter" type="button" disabled class="bg-[#059669] rounded-full text-white disabled:bg-gray-400">Ajouter</button>
+                </form>
+            </section>
+
+            <section id="filtrage" class="rounded shadow bg-white p-3 ">
+                <input id="search" placeholder="Rechercher participant" class=" border rounded px-3">
+
+                <div class="py-4 flex flex-wrap gap-3">
+                    <button type="button" class="rounded-full border border-[#1F2937] px-4">Tous</button>
+                    <button type="button" class="rounded-full border border-[#1F2937] px-4">Bureautique</button>
+                    <button type="button" class="rounded-full border border-[#1F2937] px-4">Web</button>
+                    <button type="button" class="rounded-full border border-[#1F2937] px-4">Langues</button>
+                </div>
+            </section>
+
+            <section id="section-liste" class="rounded shadow p-4 lg:col-span-2">
+                <ul id="liste"></ul> 
+                <button id="suppTT" type="button" class="font-semibold rounded bg-[#962405ed] text-white px-4 my-2">Supprimer sélection</button>
+            </section>
+
+        </div>
+    </body>
+</html>
